@@ -1,6 +1,7 @@
 # Django-Stock-Portfolio
 A basic stock portfolio made in Django.
 
+![ss](https://user-images.githubusercontent.com/47431408/133925143-86002098-3814-44bb-b252-9c5bac54255b.PNG)
 
 Functions:
 - Search by stock symbol and show individual data. (Company Name, Latest Price, Previous Close, Market Cap, YTD Change, 52WK High, 52WK Low)
@@ -19,3 +20,4 @@ pip freeze requirements:
 - requests==2.26.0
 - sqlparse==0.4.2
 - urllib3==1.26.6
+
