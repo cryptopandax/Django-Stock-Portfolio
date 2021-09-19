@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Add Stock!</h1>
+<br />
+ <form class="d-flex" action="{% url 'add_stock' %}" method="POST">
+        {% csrf_token %}
+        <input style="width: 20%;" class="form-control me-2" type="search" placeholder="Stock Index" aria-label="Search" name="ticker">
+        <button class="btn btn-outline-secondary" style="font-size: 13px;" type="submit">Add Stock Quote</button>
+ </form>
+<Br />
+<table class="table table-dark table-striped table-hover table-bordered">
+   <thead>
+    <tr>
+      <th scope="col">Company Name</th>
+      <th scope="col">Stock Quote</th>
+      <th scope="col">Previous Close</th>
+      <th scope="col">Market Cap</th>
+      <th scope="col">YTD Change</th>
+      <th scope="col">52 Week High</th>
+      <th scope="col">52 Week Low</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+{% if ticker %}
+  {% for item in output %}
+    <tr>
+      <th scope="row">{{ item.companyName }}</th>
+      <td>${{ item.latestPrice }}</td>
+      <td>${{ item.previousClose }}</td>
+      <td>${{ item.marketCap }}</td>
+      <td>{{ item.ytdChange|floatformat:2 }}%</td>
+      <td>${{ item.week52High }}</td>
+      <td>${{ item.week52Low }}</td>
+      <td><a class="btn btn-sm btn-danger" href="{% url 'delete' item.pk %}">Delete Stock</a></td>
+    </tr>
+  {% endfor %}
+{% endif %}
+  </tbody>
+</table>
+
+
+
+{% endblock %}
+
+
+
